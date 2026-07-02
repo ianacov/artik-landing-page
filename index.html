@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artik Tiles &amp; Bath | Πλακάκια &amp; Είδη Υγιεινής Θεσσαλονίκη</title>
+<meta name="description" content="Σύγχρονος εκθεσιακός χώρος στη Θεσσαλονίκη με εξειδίκευση σε πλακάκια και είδη μπάνιου.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bronze: {
+            DEFAULT: '#b8896c',
+            dark: '#9c7058',
+            light: '#d3ac95',
+          },
+          stone: {
+            50: '#f7f5f3',
+            100: '#efeae5',
+          },
+          ink: '#0a0a0a',
+        },
+        fontFamily: {
+          heading: ['Montserrat', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          widest2: '.25em',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #1c1917; }
+  h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; }
+
+  /* grout-line motif: thin hairline rules used as a recurring material cue */
+  .grout-divider {
+    background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 64px);
+  }
+  .card-lift { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
+  .card-lift:hover { transform: translateY(-6px); }
+  .img-zoom { overflow: hidden; }
+  .img-zoom img { transition: transform 1.1s cubic-bezier(.2,.8,.2,1), filter .6s ease; }
+  .img-zoom:hover img { transform: scale(1.06); }
+
+  .btn-primary {
+    background-color: #b8896c;
+    transition: background-color .35s ease, transform .35s ease;
+  }
+  .btn-primary:hover { background-color: #9c7058; transform: translateY(-2px); }
+
+  .btn-outline { transition: background-color .35s ease, color .35s ease; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  ::selection { background: #b8896c; color: #fff; }
+
+  #mobile-menu { transition: max-height .4s ease, opacity .3s ease; }
+
+  .mask-fade { -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
+</style>
+</head>
+<body class="bg-white antialiased">
+
+<!-- ============ HEADER ============ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-black">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#" class="flex flex-col leading-none select-none">
+        <span class="font-heading text-2xl font-semibold text-white tracking-tight">artik</span>
+        <span class="text-[9px] tracking-widest2 text-stone-100/60 uppercase mt-0.5">Tiles Bath</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-10 font-heading text-[13px] tracking-widest2 uppercase text-white/85">
+        <a href="#collections" class="hover:text-bronze transition-colors duration-300">Συλλογές</a>
+        <a href="#showroom" class="hover:text-bronze transition-colors duration-300">Το Showroom</a>
+        <a href="#inspiration" class="hover:text-bronze transition-colors duration-300">Έμπνευση</a>
+        <a href="#contact" class="hover:text-bronze transition-colors duration-300">Επικοινωνία</a>
+      </nav>
+
+      <a href="#contact" class="hidden md:inline-block btn-primary text-white text-xs font-heading tracking-widest2 uppercase px-6 py-3">
+        Ραντεβού
+      </a>
+
+      <!-- Mobile toggle -->
+      <button id="menu-btn" aria-label="Άνοιγμα μενού" aria-expanded="false" class="md:hidden text-white text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-bronze rounded p-1">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0 bg-black border-t border-white/10">
+    <nav class="flex flex-col px-6 py-4 gap-4 font-heading text-sm tracking-widest2 uppercase text-white/85">
+      <a href="#collections" class="py-1">Συλλογές</a>
+      <a href="#showroom" class="py-1">Το Showroom</a>
+      <a href="#inspiration" class="py-1">Έμπνευση</a>
+      <a href="#contact" class="py-1">Επικοινωνία</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative h-screen min-h-[640px] w-full overflow-hidden">
+  <img
+    src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1920&q=80"
+    alt="Μοντέρνο μπάνιο με μαρμάρινα πλακάκια"
+    class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-black/55"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+
+  <div class="relative z-10 h-full flex items-center">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+      <div class="max-w-2xl">
+        <p class="reveal font-heading text-bronze-light text-xs tracking-widest2 uppercase mb-6">Εκθεσιακός χώρος &middot; Θεσσαλονίκη</p>
+        <h1 class="reveal font-heading text-white text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] mb-6">
+          Η αισθητική συναντά<br>την ποιότητα<span class="text-bronze">.</span>
+        </h1>
+        <p class="reveal font-body text-white/80 text-base sm:text-lg leading-relaxed mb-10 max-w-xl">
+          Ανακαλύψτε κορυφαίες συλλογές σε πλακάκια και είδη υγιεινής στη Θεσσαλονίκη.
+        </p>
+        <div class="reveal flex flex-col sm:flex-row gap-4">
+          <a href="#collections" class="btn-primary text-white text-center font-heading text-xs tracking-widest2 uppercase px-8 py-4">
+            Δείτε τις Συλλογές
+          </a>
+          <a href="#showroom" class="btn-outline border border-white/50 text-white text-center font-heading text-xs tracking-widest2 uppercase px-8 py-4 hover:bg-white hover:text-black">
+            Επίσκεψη στο Showroom
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/60 animate-bounce">
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ============ VALUE PROPOSITION ============ -->
+<section class="bg-white py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-3 gap-y-14 gap-x-12">
+
+      <div class="reveal text-center md:text-left">
+        <div class="w-14 h-14 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center mb-6 mx-auto md:mx-0">
+          <i class="fa-solid fa-compass-drafting text-bronze text-lg"></i>
+        </div>
+        <h3 class="font-heading text-lg font-semibold mb-3 tracking-tight">Εξειδικευμένο Design</h3>
+        <p class="text-stone-600 leading-relaxed text-[15px]">Προτάσεις που ταιριάζουν στον δικό σας χώρο.</p>
+      </div>
+
+      <div class="reveal text-center md:text-left">
+        <div class="w-14 h-14 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center mb-6 mx-auto md:mx-0">
+          <i class="fa-solid fa-gem text-bronze text-lg"></i>
+        </div>
+        <h3 class="font-heading text-lg font-semibold mb-3 tracking-tight">Premium Υλικά</h3>
+        <p class="text-stone-600 leading-relaxed text-[15px]">Επιλεγμένα πλακίδια και είδη υγιεινής από τους καλύτερους οίκους.</p>
+      </div>
+
+      <div class="reveal text-center md:text-left">
+        <div class="w-14 h-14 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center mb-6 mx-auto md:mx-0">
+          <i class="fa-solid fa-layer-group text-bronze text-lg"></i>
+        </div>
+        <h3 class="font-heading text-lg font-semibold mb-3 tracking-tight">Ολοκληρωμένες Λύσεις</h3>
+        <p class="text-stone-600 leading-relaxed text-[15px]">Από τον σχεδιασμό μέχρι την τελική επιλογή.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="grout-divider h-px w-full"></div>
+
+<!-- ============ PRODUCT CATEGORIES ============ -->
+<section id="collections" class="bg-stone-50 py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 max-w-xl">
+      <p class="font-heading text-bronze text-xs tracking-widest2 uppercase mb-4">Συλλογές</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold tracking-tight">Κατηγορίες Προϊόντων</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <a href="#" class="reveal card-lift img-zoom group relative block h-80 sm:h-96 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" alt="Πλακάκια Δαπέδου και Τοίχου" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-7 flex items-center justify-between w-full">
+          <h3 class="font-heading text-white text-xl font-semibold">Πλακάκια Δαπέδου &amp; Τοίχου</h3>
+          <i class="fa-solid fa-arrow-right text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+        </div>
+      </a>
+
+      <a href="#" class="reveal card-lift img-zoom group relative block h-80 sm:h-96 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80" alt="Είδη Υγιεινής" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-7 flex items-center justify-between w-full">
+          <h3 class="font-heading text-white text-xl font-semibold">Είδη Υγιεινής</h3>
+          <i class="fa-solid fa-arrow-right text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+        </div>
+      </a>
+
+      <a href="#" class="reveal card-lift img-zoom group relative block h-80 sm:h-96 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=1000&q=80" alt="Μπαταρίες και Αξεσουάρ" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-7 flex items-center justify-between w-full">
+          <h3 class="font-heading text-white text-xl font-semibold">Μπαταρίες &amp; Αξεσουάρ</h3>
+          <i class="fa-solid fa-arrow-right text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+        </div>
+      </a>
+
+      <a href="#" class="reveal card-lift img-zoom group relative block h-80 sm:h-96 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1000&q=80" alt="Έπιπλα Μπάνιου" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-7 flex items-center justify-between w-full">
+          <h3 class="font-heading text-white text-xl font-semibold">Έπιπλα Μπάνιου</h3>
+          <i class="fa-solid fa-arrow-right text-white opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"></i>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSPIRATION GALLERY ============ -->
+<section id="inspiration" class="bg-white py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 text-center max-w-xl mx-auto">
+      <p class="font-heading text-bronze text-xs tracking-widest2 uppercase mb-4">Έμπνευση</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold tracking-tight mb-4">Δημιουργήστε το μπάνιο των ονείρων σας</h2>
+      <a href="https://instagram.com/artiktiles" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-stone-500 hover:text-bronze transition-colors duration-300 text-sm">
+        <i class="fa-brands fa-instagram"></i> @artiktiles
+      </a>
+    </div>
+
+    <div class="columns-2 sm:columns-3 gap-4 [&>*]:mb-4">
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=600&q=80" alt="Έμπνευση μπάνιου" class="w-full h-auto object-cover"></div>
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?auto=format&fit=crop&w=600&q=80" alt="Έμπνευση μπάνιου" class="w-full h-auto object-cover"></div>
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=90" alt="Μαρμάρινο πλακάκι" class="w-full h-auto object-cover"></div>
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?auto=format&fit=crop&w=600&q=80" alt="Ντουζιέρα" class="w-full h-auto object-cover"></div>
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=90" alt="Μαρμάρινο μπάνιο" class="w-full h-auto object-cover"></div>
+      <div class="reveal img-zoom overflow-hidden"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Λεπτομέρεια νιπτήρα" class="w-full h-auto object-cover"></div>
+    </div>
+  </div>
+</section>
+
+<div class="grout-divider h-px w-full"></div>
+
+<!-- ============ SHOWROOM ============ -->
+<section id="showroom" class="bg-stone-50 py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal img-zoom overflow-hidden order-2 lg:order-1 h-80 lg:h-[480px]">
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1200&q=80" alt="Ο εκθεσιακός χώρος Artik Tiles &amp; Bath" class="w-full h-full object-cover">
+    </div>
+    <div class="reveal order-1 lg:order-2">
+      <p class="font-heading text-bronze text-xs tracking-widest2 uppercase mb-4">Το Showroom</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold tracking-tight mb-6 leading-tight">Ένας χώρος για να αγγίξετε την ποιότητα</h2>
+      <p class="text-stone-600 leading-relaxed text-[15px] mb-8 max-w-md">
+        Σας περιμένουμε στον σύγχρονο εκθεσιακό μας χώρο για να δείτε τα υλικά από κοντά και να σχεδιάσουμε μαζί το project σας.
+      </p>
+      <a href="#contact" class="btn-primary inline-block text-white font-heading text-xs tracking-widest2 uppercase px-8 py-4">
+        Κλείστε Ραντεβού
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT & MAP ============ -->
+<section id="contact" class="bg-white py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 max-w-xl">
+      <p class="font-heading text-bronze text-xs tracking-widest2 uppercase mb-4">Επικοινωνία</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold tracking-tight">Επισκεφθείτε μας ή στείλτε μας μήνυμα</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-14">
+
+      <!-- Info + Map -->
+      <div class="reveal space-y-8">
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <i class="fa-solid fa-location-dot text-bronze mt-1"></i>
+            <div>
+              <p class="font-heading text-sm font-semibold tracking-wide uppercase mb-1">Διεύθυνση</p>
+              <p class="text-stone-600 text-[15px]">Λεωφόρος Γεωργικής Σχολής, Θεσσαλονίκη</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <i class="fa-solid fa-phone text-bronze mt-1"></i>
+            <div>
+              <p class="font-heading text-sm font-semibold tracking-wide uppercase mb-1">Τηλέφωνο</p>
+              <p class="text-stone-600 text-[15px]">2310 000 000</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <i class="fa-solid fa-clock text-bronze mt-1"></i>
+            <div>
+              <p class="font-heading text-sm font-semibold tracking-wide uppercase mb-1">Ωράριο</p>
+              <p class="text-stone-600 text-[15px]">Δευ–Παρ 09:00–17:00 &middot; Σάβ 10:00–14:00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-72 w-full overflow-hidden border border-stone-100">
+          <iframe
+            title="Χάρτης τοποθεσίας Artik Tiles &amp; Bath"
+            src="https://www.google.com/maps?q=Thessaloniki,Greece&output=embed"
+            class="w-full h-full grayscale-[30%]"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal bg-stone-50 p-8 sm:p-10">
+        <form class="space-y-6">
+          <div>
+            <label for="name" class="block font-heading text-xs tracking-widest2 uppercase text-stone-500 mb-2">Όνομα</label>
+            <input id="name" name="name" type="text" placeholder="Το όνομά σας" class="w-full bg-white border border-stone-200 px-4 py-3 text-sm focus:outline-none focus:border-bronze transition-colors duration-300">
+          </div>
+          <div>
+            <label for="phone" class="block font-heading text-xs tracking-widest2 uppercase text-stone-500 mb-2">Τηλέφωνο</label>
+            <input id="phone" name="phone" type="tel" placeholder="69XXXXXXXX" class="w-full bg-white border border-stone-200 px-4 py-3 text-sm focus:outline-none focus:border-bronze transition-colors duration-300">
+          </div>
+          <div>
+            <label for="message" class="block font-heading text-xs tracking-widest2 uppercase text-stone-500 mb-2">Μήνυμα</label>
+            <textarea id="message" name="message" rows="4" placeholder="Πείτε μας για το project σας" class="w-full bg-white border border-stone-200 px-4 py-3 text-sm focus:outline-none focus:border-bronze transition-colors duration-300 resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full text-white font-heading text-xs tracking-widest2 uppercase px-8 py-4">
+            Αποστολή Μηνύματος
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-black text-white/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid sm:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+      <div>
+        <span class="font-heading text-2xl font-semibold text-white">artik<span class="text-bronze">.</span></span>
+        <p class="text-[9px] tracking-widest2 text-white/40 uppercase mt-1 mb-4">Tiles + Bath</p>
+        <p class="text-sm leading-relaxed max-w-xs text-white/50">Εκθεσιακός χώρος πλακακιών και ειδών υγιεινής στη Θεσσαλονίκη.</p>
+      </div>
+      <div>
+        <p class="font-heading text-xs tracking-widest2 uppercase text-white mb-4">Πλοήγηση</p>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li><a href="#collections" class="hover:text-bronze transition-colors duration-300">Συλλογές</a></li>
+          <li><a href="#showroom" class="hover:text-bronze transition-colors duration-300">Το Showroom</a></li>
+          <li><a href="#inspiration" class="hover:text-bronze transition-colors duration-300">Έμπνευση</a></li>
+          <li><a href="#contact" class="hover:text-bronze transition-colors duration-300">Επικοινωνία</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-heading text-xs tracking-widest2 uppercase text-white mb-4">Ακολουθήστε μας</p>
+        <div class="flex gap-4">
+          <a href="https://instagram.com/artiktiles" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 flex items-center justify-center border border-white/15 hover:border-bronze hover:text-bronze transition-colors duration-300">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 flex items-center justify-center border border-white/15 hover:border-bronze hover:text-bronze transition-colors duration-300">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+      <p>&copy; <span id="year"></span> Artik Tiles + Bath. Με επιφύλαξη παντός δικαιώματος.</p>
+      <p>Designed by <span class="text-white/50">[]</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+    if (isOpen) {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    } else {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    }
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
